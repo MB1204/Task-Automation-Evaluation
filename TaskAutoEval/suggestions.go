@@ -39,7 +39,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	// Prepare the payload for Replicate API
 	replicateURL := "https://api.replicate.com/v1/predictions"
-	replicateAPIKey := os.Getenv("REPLICATE_API_KEY") // Use environment variable
+	replicateAPIKey := os.Getenv("r8_TXuSkiGfodml0LIiRBaSJCZ5pIYG4fH1cNZvG") // Use environment variable
 
 	requestBody := ReplicateRequest{
 		Input: fmt.Sprintf("Give the best automation suggestions for this task:\n%s", inputText),
