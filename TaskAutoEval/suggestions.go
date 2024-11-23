@@ -1,4 +1,4 @@
-package handler
+package main
 
 import (
 	"bytes"
@@ -35,10 +35,11 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	for key, value := range r.Form {
 		inputText += fmt.Sprintf("%s: %s\n", key, value[0])
 	}
+	fmt.Println("Input Text:", inputText) // Log input text
 
 	// Prepare the payload for Replicate API
 	replicateURL := "https://api.replicate.com/v1/predictions"
-	replicateAPIKey := os.Getenv("r8_TXuSkiGfodml0LIiRBaSJCZ5pIYG4fH1cNZvG")
+	replicateAPIKey := os.Getenv("r8_7l0Js9CxBw8Rra4UanlC2bkhxrYl5DP1jOc71") // Use environment variable
 
 	requestBody := ReplicateRequest{
 		Input: fmt.Sprintf("Give the best automation suggestions for this task:\n%s", inputText),
@@ -49,6 +50,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Failed to create request payload", http.StatusInternalServerError)
 		return
 	}
+	fmt.Println("Payload to Replicate API:", string(payload)) // Log payload
 
 	// Send the request to Replicate API
 	req, err := http.NewRequest("POST", replicateURL, bytes.NewBuffer(payload))
@@ -67,12 +69,19 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer resp.Body.Close()
 
+	// Check response status
+	if resp.StatusCode != http.StatusOK {
+		http.Error(w, fmt.Sprintf("Replicate API error: %s", resp.Status), http.StatusInternalServerError)
+		return
+	}
+
 	// Read and parse the response
 	respBody, err := io.ReadAll(resp.Body)
 	if err != nil {
 		http.Error(w, "Failed to read response from Replicate API", http.StatusInternalServerError)
 		return
 	}
+	fmt.Println("Response from Replicate API:", string(respBody)) // Log response
 
 	var replicateResp ReplicateResponse
 	err = json.Unmarshal(respBody, &replicateResp)
