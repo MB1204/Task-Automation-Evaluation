@@ -39,12 +39,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	// Prepare the payload for Replicate API
 	replicateURL := "https://api.replicate.com/v1/predictions"
-	replicateAPIKey := os.Getenv("r8_TXuSkiGfodml0LIiRBaSJCZ5pIYG4fH1cNZvG") // Use the correct environment variable name
-
-	if replicateAPIKey == "" {
-		http.Error(w, "Replicate API key is not set", http.StatusInternalServerError)
-		return
-	}
+	replicateAPIKey := os.Getenv("REPLICATE_API_KEY") // Use environment variable
 
 	requestBody := ReplicateRequest{
 		Input: fmt.Sprintf("Give the best automation suggestions for this task:\n%s", inputText),
@@ -104,13 +99,4 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	w.Header().Set("Content-Type", "text/html")
 	w.Write([]byte(suggestionsHTML))
-}
-
-func main() {
-	http.HandleFunc("/suggestions", Handler) // Set up the route
-	fmt.Println("Server is running on http://localhost:8080/suggestions")
-	err := http.ListenAndServe(":8080", nil) // Start the server
-	if err != nil {
-		fmt.Println("Failed to start server:", err)
-	}
 }
