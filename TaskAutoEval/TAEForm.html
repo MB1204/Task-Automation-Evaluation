@@ -10,7 +10,7 @@
     <div class="background"></div>
     <div class="form-container">
         <h1>Task Automation Evaluation Form</h1>
-        <form>
+        <form id="evaluation-form" hx-post="/api/suggestions" hx-trigger="submit" hx-target="#suggestions-container" hx-swap="innerHTML">
             <fieldset>
                 <legend>1. Functionality</legend>
                 <label for="functionality1">Does the automation perform the intended task(s) reliably and accurately?</label>
@@ -85,6 +85,7 @@
 
             <button type="submit">Submit Feedback</button>
         </form>
+        <div id="suggestions-container" class="suggestions-output"></div>
     </div>
 </body>
 </html>
