@@ -6,7 +6,7 @@
         "use": "@vercel/go"
       },
       {
-        "src": "index.html",
+        "src": "TAEForm.html",
         "use": "@vercel/static"
       }
     ],
