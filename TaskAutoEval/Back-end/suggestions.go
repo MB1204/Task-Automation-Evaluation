@@ -10,13 +10,13 @@ import (
 )
 
 type FormData struct {
-    Task1        string `json:"task1"`
-    Task2        string `json:"task2"`
-    Tools1       string `json:"tools1"`
-    Tracking1    string `json:"tracking1"`
-    Pain1        string `json:"pain1"`
-    Pain2        string `json:"pain2"`
-    Goals1       string `json:"goals1"`
+    Task1     string `json:"task1"`
+    Task2     string `json:"task2"`
+    Tools1    string `json:"tools1"`
+    Tracking1 string `json:"tracking1"`
+    Pain1     string `json:"pain1"`
+    Pain2     string `json:"pain2"`
+    Goals1    string `json:"goals1"`
 }
 
 type ApiResponse struct {
@@ -100,8 +100,9 @@ func submitHandler(w http.ResponseWriter, r *http.Request) {
             Task2:     r.FormValue("task2"),
             Tools1:    r.FormValue("tools1"),
             Tracking1: r.FormValue("tracking1"),
-            Pain1:     r.FormValue("pain1"),
-            Pain2:     r.FormValue("pain2 Goals1:    r.FormValue("goals1"),
+            Pain1:     r.FormValue ("pain1"),
+            Pain2:     r.FormValue("pain2"),
+            Goals1:    r.FormValue("goals1"),
         }
 
         // Send the data to an external API
@@ -125,8 +126,8 @@ func submitHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func getAutomationSuggestions(data FormData) ([]string, error) {
-    apiUrl := "https://https://task-automation-evaluation.vercel.app//api/suggestions" // Replace with your API endpoint
-    apiToken := os.Getenv("r8_TXuSkiGfodml0LIiRBaSJCZ5pIYG4fH1cNZvG") // Get the API token from environment variables
+    apiUrl := "https://task-automation-evaluation.vercel.app/api/suggestions" // Corrected API endpoint
+    apiToken := os.Getenv("r8_TXuSkiGfodml0LIiRBaSJCZ5pIYG4fH1cNZvG") // Use environment variable for API token
 
     query := fmt.Sprintf("Give the best automation suggestions based on the answers: %s, %s, %s, %s, %s, %s, %s",
         data.Task1, data.Task2, data.Tools1, data.Tracking1, data.Pain1, data.Pain2, data.Goals1)
@@ -161,4 +162,4 @@ func getAutomationSuggestions(data FormData) ([]string, error) {
     }
 
     return apiResponse.Suggestions, nil
-}
+} 
