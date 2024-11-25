@@ -127,7 +127,7 @@ func submitHandler(w http.ResponseWriter, r *http.Request) {
 
 func getAutomationSuggestions(data FormData) ([]string, error) {
     apiUrl := "https://task-automation-evaluation.vercel.app/api/suggestions" // Corrected API endpoint
-    apiToken := os.Getenv("r8_TXuSkiGfodml0LIiRBaSJCZ5pIYG4fH1cNZvG") // Use environment variable for API token
+    apiToken := os.Getenv("API_TOKEN") // Use environment variable for API token
 
     query := fmt.Sprintf("Give the best automation suggestions based on the answers: %s, %s, %s, %s, %s, %s, %s",
         data.Task1, data.Task2, data.Tools1, data.Tracking1, data.Pain1, data.Pain2, data.Goals1)
