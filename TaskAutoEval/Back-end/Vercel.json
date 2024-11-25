@@ -1,23 +1,23 @@
 {
-    "version": 2,
-    "builds": [
-      {
-        "src": "api/**/*.go",
-        "use": "@vercel/go"
-      },
-      {
-        "src": "TAEForm.html",
-        "use": "@vercel/static"
-      }
-    ],
-    "routes": [
-      {
-        "src": "/api/suggestions",
-        "dest": "/api/suggestions"
-      },
-      {
-        "src": "/(.*)",
-        "dest": "/TAEForm.html"
-      }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    {
+      "src": "api/**/*.go",
+      "use": "@vercel/go"
+    },
+    {
+      "src": "TAEForm.html",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/suggestions",
+      "dest": "/api/suggestions"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/TAEForm.html"
+    }
+  ]
+}
