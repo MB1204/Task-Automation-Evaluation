@@ -5,49 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="TAEForm.css">
     <title>Task Automation Evaluation Form</title>
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
 </head>
 <body>
     <div class="background"></div>
     <div class="form-container">
         <h1>Task Automation Evaluation Form</h1>
         <form id="evaluation-form"
-         hx-trigger="submit" hx-target="#suggestions-container" hx-swap="innerHTML">
+              hx-trigger="submit" hx-target="#suggestions-container" hx-swap="innerHTML">
             <fieldset>
                 <legend>Task Identification</legend>
                 <label for="task1">What specific tasks or processes are you currently performing that you believe could be automated? Please list them.</label>
-                <textarea id="task1" required></textarea>
+                <textarea id="task1" name="task1" required></textarea>
             
                 <label for="task2">Which tasks in your workflow consume the most time? Please describe them.</label>
-                <textarea id="task2" required></textarea>
+                <textarea id="task2" name="task2" required></textarea>
             </fieldset>
 
             <fieldset>
                 <legend>Current Tools and Processes</legend>
                 <label for="tools1">What tools or software are you currently using to manage these tasks? Please specify.</label>
-                <textarea id="tools1" required></textarea>
+                <textarea id="tools1" name="tools1" required></textarea>
             
                 <label for="tracking1">How do you currently track the progress of these tasks? Describe your method.</label>
-                <textarea id="tracking1" required></textarea>
+                <textarea id="tracking1" name="tracking1" required></textarea>
             </fieldset>
 
             <fieldset>
                 <legend>Pain Points</legend>
                 <label for="pain1">What challenges or frustrations do you encounter with your current task management process? Please elaborate.</label>
-                <textarea id="pain1" required></textarea>
+                <textarea id="pain1" name="pain1" required></textarea>
             
-                <label for="pain2">Are there any repetitive tasks that you find particularly tedious or prone to errors? If so, please describe.</label>
-                <textarea id="pain2" required></textarea>
-            </fieldset>
-
-            <fieldset>
-    <legend>Goals and Outcomes</legend>
-    <label for="goals1">What are your primary goals for automating these tasks? (e.g., saving time, reducing errors, improving efficiency)</label>
-    <textarea id="goals1" required></textarea>
-</fieldset>
-
-            <button type="submit">Submit Feedback</button>
-        </form>
-        <div id="suggestions-container" class="suggestions-output"></div>
-    </div>
-</body>
-</html>
+                <label for="pain2">Are there any repetitive tasks that you
