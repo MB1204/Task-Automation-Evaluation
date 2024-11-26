@@ -36,4 +36,23 @@
                 <label for="pain1">What challenges or frustrations do you encounter with your current task management process? Please elaborate.</label>
                 <textarea id="pain1" name="pain1" required></textarea>
             
-                <label for="pain2">Are there any repetitive tasks that you
+                <label for="pain2">Are there any repetitive tasks that you find particularly tedious or prone to errors? If so, please describe.</label>
+                <textarea id="pain2" name="pain2" required></textarea>
+            </fieldset>
+
+            <fieldset>
+                <legend>Goals and Outcomes</legend>
+                <label for="goals1">What are your primary goals for automating these tasks? (e.g., saving time, reducing errors, improving efficiency)</label>
+                <textarea id="goals1" name="goals1" required></textarea>
+            </fieldset>
+
+            <button type="submit">Submit Feedback</button>
+        </form>
+        <div id="suggestions-container" class="suggestions-output"></div>
+    </div>
+
+    <script>
+        const BACKEND_URL = "https://your-backend-url.up.railway.app"; // Replace with your actual backend URL
+    </script>
+</body>
+</html>
