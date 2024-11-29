@@ -32,7 +32,7 @@ func main() {
 }
 
 func formHandler(w http.ResponseWriter, r *http.Request) {
-    // Serve the HTML form
+    // Serve thpackage maine HTML form
     if r.Method == http.MethodGet {
         tmpl := `
         <!DOCTYPE html>
@@ -132,6 +132,8 @@ func getAutomationSuggestions(data FormData) ([]string, error) {
     query := fmt.Sprintf("Give the best automation suggestions based on the answers: %s, %s, %s, %s, %s, %s, %s",
         data.Task1, data.Task2, data.Tools1, data.Tracking1, data.Pain1, data.Pain2, data.Goals1)
 
+    fmt.Printf("Sending request with query: %s\n", query) // Log the query being sent
+
     requestBody, err := json.Marshal(map[string]string{"query": query})
     if err != nil {
         return nil, err
@@ -162,4 +164,4 @@ func getAutomationSuggestions(data FormData) ([]string, error) {
     }
 
     return apiResponse.Suggestions, nil
-} 
+}
